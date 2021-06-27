@@ -1,0 +1,14 @@
+name: rails-check
+
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: rails startup
+        run: |
+          docker-compose up -d --build
+      - name: rails shutdown
+        run: |
+          docker-compose down
